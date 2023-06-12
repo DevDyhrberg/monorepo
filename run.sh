@@ -74,12 +74,14 @@ case $COMMAND in
                 docker-compose \
                     -f development/docker/docker-compose.dev.yml \
                     -f development/docker/docker-compose.dev.env.yml \
+                    -p monorepo-stack \
                     up --detach
                 ;;
 
             stop)
                 docker-compose \
                     -f development/docker/docker-compose.dev.yml \
+                    -p monorepo-stack \
                     stop
                 ;;
 
@@ -87,11 +89,13 @@ case $COMMAND in
                 docker-compose \
                     -f development/docker/docker-compose.dev.yml \
                     -f development/docker/docker-compose.dev.env.yml \
+                    -p monorepo-stack \
                     build --no-cache
                 ;;
             prod)
                 docker-compose \
                     -f development/docker/docker-compose.prod.yml \
+                    -p monorepo-prod-stack \
                     build
                 ;;
 
