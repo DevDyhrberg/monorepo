@@ -1,0 +1,25 @@
+{
+    "name": "@monorepo-apps/first-app",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "dev": "next -p 3000",
+        "build": "next build",
+        "start": "next start -p 3000",
+        "lint": "next lint --dir components --dir lib --dir pages --dir shared --dir utils",
+        "test": "jest --passWithNoTests",
+        "test-win": "SET NODE_ENV=test&& jest --watch"
+    },
+    "dependencies": {
+        "next": "^13.4.1",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
+    },
+    "devDependencies": {
+        "@monorepo-config/eslint": "workspace:*",
+        "@types/next": "9.0.0",
+        "@types/react": "18.2.11",
+        "typescript": "^4.5.3",
+        "eslint": "^8.33.0"
+    }
+}

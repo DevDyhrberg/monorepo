@@ -1,0 +1,37 @@
+version: '3.7'
+services:
+    first-app:
+        networks:
+            - main-net
+        ports:
+            - 8000:3000
+        build:
+            dockerfile: apps/first-app/Dockerfile.dev
+            context: ../../
+        volumes:
+            - ../../:/usr/node/app
+
+    second-app:
+        networks:
+            - main-net
+        ports:
+            - 8001:3001
+        build:
+            dockerfile: apps/second-app/Dockerfile.dev
+            context: ../../
+        volumes:
+            - ../../:/usr/node/app
+
+    storybook:
+        ports:
+            - 8002:6006
+        build:
+            dockerfile: packages/ui/components/Dockerfile
+            context: ../../
+        volumes:
+            - ../../:/usr/node/app
+
+networks:
+    main-net:
+        name: main-net
+        driver: bridge

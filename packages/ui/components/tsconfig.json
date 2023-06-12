@@ -1,0 +1,9 @@
+{
+    "extends": "@monorepo-config/typescript/react.json",
+    "compilerOptions": {
+        "baseUrl": ".",
+        "lib": ["dom", "dom.iterable", "esnext"]
+    },
+    "include": ["src/**/*.tsx", "src/**/*.ts"],
+    "exclude": ["dist", "node_modules"]
+}
