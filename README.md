@@ -1,81 +1,79 @@
-# Turborepo starter
+# Pantrii - Mono Repo
 
-This is an official starter Turborepo.
+**Table Of Contents**
 
-## Using this example
+-   [Development environment](#development-environment)
+    -   [Debugging](#debugging)
+    -   [First time installation](#first-time-installation)
+    -   [Running development environment](#running-development-environment)
+    -   [Updating development environment](#updating-development-environment)
+    -   [Debugging development envionment](#debugging-development-envionment)
 
-Run the following command:
+## Development environment
 
-```sh
-npx create-turbo@latest
-```
+### Debugging
 
-## What's inside?
+1. If you see this error when you try to use the ./run.sh script `bash: ./run.sh: Permission denied`, enter `chmod +x ./run.sh` which will give the run.sh file execution permissions.
 
-This Turborepo includes the following packages/apps:
+### First time installation
 
-### Apps and Packages
+-   run `./run.sh init`
+-   The development environment should be ready now!
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
-- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
+### Running development environment
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+1. Docker
 
-### Utilities
+Starting docker environment
 
-This Turborepo has some additional tools already setup for you:
+-   run `./run.sh docker start`
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+Stopping docker environment
 
-### Build
+-   run `./run.sh docker stop`
 
-To build all apps and packages, run the following command:
+Start watching typescript packages in /packages/\*\*
 
-```
-cd my-turborepo
-pnpm build
-```
+-   run `./run.sh packages watch`
 
-### Develop
+Testing CI builds locally (Checks for linting and ts errors)
 
-To develop all apps and packages, run the following command:
+-   run `./run.sh docker prod`
 
-```
-cd my-turborepo
-pnpm dev
-```
+### Updating development environment
 
-### Remote Caching
+Updating docker images (which you want to do when there has been changes to Dockerfile.dev files)
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+-   run `./run.sh docker build`
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+Install dependencies (which you want to do every time you change a branch to ensure that you have all necessary dependencies installed)
 
-```
-cd my-turborepo
-npx turbo login
-```
+-   run `./run.sh dependency install`
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+Adding new dependency or multiple dependencies to a workspace
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+-   run `./run.sh dependency add <WORKSPACE_NAME> <...DEPENDENCIES>`
+-   Example `./run.sh dependency add @monorepo-ui/components react react-dom`
 
-```
-npx turbo link
-```
+Removing dependency or multiple dependencies from a workspace
 
-## Useful Links
+-   run `./run.sh dependency remove <WORKSPACE_NAME> <...DEPENDENCIES>`
+-   Example `./run.sh dependency remove @monorepo-ui/components react react-dom`
 
-Learn more about the power of Turborepo:
+### Debugging development envionment
 
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+1. Docker containers
+
+VSCode
+
+-   Go to the docker extension in VSCode
+-   Right click "pantrii-stack" in the containers section, and click "Compose logs"
+
+Docker Dashboard
+
+-   Open Docker Dashboard
+-   Click pantrii-stack and click on the container you want to see the logs
+
+2. Node packages
+
+Look in the console when running `./run.sh packages build` or `./run.sh packages watch`
