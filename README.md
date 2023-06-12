@@ -67,12 +67,12 @@ Removing dependency or multiple dependencies from a workspace
 VSCode
 
 -   Go to the docker extension in VSCode
--   Right click "pantrii-stack" in the containers section, and click "Compose logs"
+-   Right click "monorepo-stack" in the containers section, and click "Compose logs"
 
 Docker Dashboard
 
 -   Open Docker Dashboard
--   Click pantrii-stack and click on the container you want to see the logs
+-   Click monorepo-stack and click on the container you want to see the logs
 
 2. Node packages
 
