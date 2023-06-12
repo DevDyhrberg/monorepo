@@ -1,4 +1,4 @@
-# Pantrii - Mono Repo
+# Michael's Monorepo
 
 **Table Of Contents**
 
